@@ -27,7 +27,7 @@ sap.ui.define(
                     this.getView().setModel(this.oModel);
                 };
                 this.oModel.setProperty("/people", []);
-                this.oModel.setProperty("/newEnable", false);                
+                this.oModel.setProperty("/newEnable", false);
             },
 
             onGetLocalStorage: function () {
@@ -35,19 +35,25 @@ sap.ui.define(
                 let gender = localStorage.getItem("gender");
                 let name = localStorage.getItem("name");
                 let ybirth = localStorage.getItem("ybirth");
-                badge = JSON.parse(badge);
-                gender = JSON.parse(gender);
-                name = JSON.parse(name);
-                ybirth = JSON.parse(ybirth);
-                let people = [];
-                for (let i = 0; i < badge.length; i++) {
-                    let oRow = {badge:`${badge[i]}`,
-                        gender:`${gender[i]}`,
-                        name:`${name[i]}`,
-                        ybirth:`${ybirth[i]}`};
-                    people.push(oRow);               
+                if (!badge) {
+                    let people = [];
+                } else {
+                    badge = JSON.parse(badge);
+                    gender = JSON.parse(gender);
+                    name = JSON.parse(name);
+                    ybirth = JSON.parse(ybirth);
+                    let people = [];
+                    for (let i = 0; i < badge.length; i++) {
+                        let oRow = {
+                            badge: `${badge[i]}`,
+                            gender: `${gender[i]}`,
+                            name: `${name[i]}`,
+                            ybirth: `${ybirth[i]}`
+                        };
+                        people.push(oRow);
+                    }
+                    this.oModel.setProperty("/people", people);
                 }
-                this.oModel.setProperty("/people", people);
             },
 
             onNew: function (oEvent) {
@@ -58,7 +64,7 @@ sap.ui.define(
                 this.SaveMode = "N"
                 this.onCreateEditDialog(this.SaveMode, false, EventId);
                 this.oModel.setProperty('/isNew', true);
-                
+
 
             },
 
@@ -118,12 +124,12 @@ sap.ui.define(
             onDelete: function (oEvent) {
                 const rowSelected = this.onSelectRow(oEvent);
                 let oPeople = this.oModel.getProperty("/people");
-                oPeople.splice(this.SelectedRow,1);
-                this.oModel.setProperty("/people",oPeople);
+                oPeople.splice(this.SelectedRow, 1);
+                this.oModel.setProperty("/people", oPeople);
                 this.refreshBKP();
             },
 
-            onSelectRow: function (oEvent){
+            onSelectRow: function (oEvent) {
                 const oTable = this.byId('person_table');
                 const index = oEvent.getParameters().row.getIndex();
                 const sPath = oTable.getContextByIndex(index).sPath;
@@ -139,10 +145,10 @@ sap.ui.define(
 
             refreshBKP: function () {
                 let badge, gender, name, ybirth
-                badge=[]
-                gender=[]
-                name=[]
-                ybirth=[]
+                badge = []
+                gender = []
+                name = []
+                ybirth = []
                 const oPeople = this.oModel.getProperty("/people")
                 oPeople.forEach(element => {
                     badge.push(element.badge)
@@ -150,14 +156,14 @@ sap.ui.define(
                     name.push(element.name)
                     ybirth.push(element.ybirth)
                 });
-                badge=JSON.stringify(badge)
-                gender=JSON.stringify(gender)
-                name=JSON.stringify(name)
-                ybirth=JSON.stringify(ybirth)
-                localStorage.setItem("badge",badge)
-                localStorage.setItem("gender",gender)
-                localStorage.setItem("name",name)
-                localStorage.setItem("ybirth",ybirth)
+                badge = JSON.stringify(badge)
+                gender = JSON.stringify(gender)
+                name = JSON.stringify(name)
+                ybirth = JSON.stringify(ybirth)
+                localStorage.setItem("badge", badge)
+                localStorage.setItem("gender", gender)
+                localStorage.setItem("name", name)
+                localStorage.setItem("ybirth", ybirth)
             },
 
             onTest: function (oEvent) {

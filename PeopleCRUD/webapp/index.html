@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD</title>
+    <script id="sap-ui-bootstrap" src="https://sapui5.hana.ondemand.com/1.71.42/resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_belize" data-sap-ui-resourceroots='{"crud": "./"}'
+        data-sap-ui-compatVersion="edge" data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
+        data-sap-ui-frameOptions="trusted"></script>
+
+
+    <script>
+        sap.ui.getCore().attachInit(function () {
+            app: new sap.ui.core.ComponentContainer({
+                height: "100%",
+                name: "crud"
+            }).placeAt("content");
+        });
+    </script>
+
+    <link href="https://www.saomartinho.com.br/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+
+<body class="sapUiBody" id="content">
+
+</body>
+
+</html>

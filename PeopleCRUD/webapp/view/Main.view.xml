@@ -1,0 +1,103 @@
+<mvc:View controllerName="crud.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:c="sap.suite.ui.commons"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:layout="sap.ui.layout"
+    xmlns:t="sap.ui.table" class="sapUiSizeCompact">
+    <App id="app">
+        <f:DynamicPage id="interface-sap-cadastro-recipe-status" headerExpanded="{/headerExpanded}" showFooter="true">            <!-- DynamicPage Title -->
+            <f:title>
+                <f:DynamicPageTitle id="DynamicPageTitle">
+                    <f:heading>
+                        <Title id="title" text="{i18n>trainingTitle}" />
+                    </f:heading>
+                    <f:actions>
+                        <ToolbarSpacer/>
+                        <Image id="logo_img" src="img/logo.jpg" width="100px" />
+                    </f:actions>
+                </f:DynamicPageTitle>
+            </f:title>            <!-- DynamicPage Header -->
+            <f:header>
+                <f:DynamicPageHeader pinnable="true">
+                    <f:content>
+                        <fb:FilterBar id="filterbar" useToolbar="false" showGoOnFB="false" showFilterConfiguration="false">
+                            <fb:filterItems>
+                                <!-- <fb:FilterItem name="people" label="{i18n>people}">
+                                    <fb:control>
+                                        <ComboBox id="people" filterSecondaryValues="false" value="{form>/people}" selectedKey="{form>/people}" editable="{/cbeditable}" required="true" items="{																path: '/Plants'															}">
+                                            <core:Item key="{people}" text="{people}" />
+                                        </ComboBox>
+                                    </fb:control>
+                                </fb:FilterItem> -->
+                            </fb:filterItems>
+                        </fb:FilterBar>
+                        <Toolbar id="tb_buttons">
+                            <ToolbarSpacer/>
+                            <Button xmlns="sap.m" icon="sap-icon://search" press="onSearch" text="{i18n>bt_search}" id="bt_search" type="Emphasized" />
+                            <!-- <Button xmlns="sap.m" icon="sap-icon://alphabetical-order" press="onTest" text="Test" id="bt_Test" type="Emphasized" /> -->
+                            <ToolbarSpacer/>
+                        </Toolbar>
+                    </f:content>
+                </f:DynamicPageHeader>
+            </f:header>            <!-- DynamicPage Content -->
+            <f:content>
+                <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="false" headerText="{i18n>ppl_table}" height="auto" width="100%">
+                    <content>
+                        <t:Table id="person_table" rows="{/people}" rowActionCount="2" alternateRowColors="true" selectionMode="None" selectionBehavior="Row" visibleRowCountMode="Auto" >
+                            <t:extension>
+                                <OverflowToolbar>
+                                    
+                                </OverflowToolbar>
+                            </t:extension>
+                            <t:columns>
+                                <t:Column id="badge_ID" autoResizable="true" filterProperty="badge" sortOrder="Ascending" sortProperty="badge" hAlign="Center" width="8%">
+                                    <Label text="{i18n>badge}"/>
+                                    <t:template>
+                                        <Text text="{badge}"/>
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="column_name" autoResizable="true" filterProperty="name" sortProperty="name" hAlign="Center">
+                                    <Label text="{i18n>name}"/>
+                                    <t:template>
+                                        <Text text="{name}"/>
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="column_gender" autoResizable="true" filterProperty="gender" sortProperty="gender" hAlign="Center">
+                                    <Label text="{i18n>gender}"/>
+                                    <t:template>
+                                        <Text text="{gender}"/>
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="column_ybirth" autoResizable="true" filterProperty="ybirth" sortProperty="ybirth" hAlign="Center">
+                                    <Label text="{i18n>ybirth}"/>
+                                    <t:template>
+                                        <Text text="{ybirth}"/>
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                            <t:rowActionTemplate>
+                                <t:RowAction>
+                                    <t:items>
+                                        <t:RowActionItem type="Custom" icon="sap-icon://edit" press="onEdit" class="sapUiSmallMarginEnd" />
+                                        <t:RowActionItem type="Delete" icon="sap-icon://delete" press="onDelete" />
+                                    </t:items>
+                                </t:RowAction>
+                            </t:rowActionTemplate>
+                        </t:Table>
+                    </content>
+                    <headerToolbar></headerToolbar>
+                    <infoToolbar></infoToolbar>
+                </Panel>
+            </f:content>
+            <f:footer>
+                <OverflowToolbar visible="{/isRoleEdit}">
+                    <ToolbarSpacer/>
+                    <Button icon="sap-icon://add-document" text="{i18n>bt_new}" type="Emphasized" enabled="{/newEnable}" press="onNew"/>
+                </OverflowToolbar>
+            </f:footer>
+        </f:DynamicPage>
+    </App>
+</mvc:View>

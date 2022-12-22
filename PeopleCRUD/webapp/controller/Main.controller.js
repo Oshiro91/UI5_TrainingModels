@@ -104,7 +104,8 @@ sap.ui.define(
             },
 
             onAfterClose: function () {
-                this.oDialog.destroy()
+                this.oDialog.destroy();
+                this.onGetLocalStorage()
             },
 
             onSave: function () {

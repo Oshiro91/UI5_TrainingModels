@@ -1,0 +1,133 @@
+<mvc:View
+    controllerName="rpgsheet.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:c="sap.suite.ui.commons"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:layout="sap.ui.layout"
+    xmlns:t="sap.ui.table"
+    class="sapUiSizeCompact"
+>
+    <App id="app">
+        <f:DynamicPage
+            id="interface-sap-cadastro-recipe-status"
+            headerExpanded="{/headerExpanded}"
+            showFooter="true"
+        >
+            <f:title>
+                <f:DynamicPageTitle id="DynamicPageTitle">
+                    <f:heading>
+                        <Title
+                            id="title"
+                            text="{i18n>pagetitle}"
+                        />
+                    </f:heading>
+                    <f:actions>
+                        <Image
+                            id="logo_img"
+                            src="img/DD-logo.png"
+                            width="100px"
+                        />
+                        <ToolbarSpacer />
+                    </f:actions>
+                </f:DynamicPageTitle>
+            </f:title>
+            <f:header>
+                <f:DynamicPageHeader pinnable="true">
+                    <f:content>
+                        <Toolbar id="tb_buttons">
+                            <ToolbarSpacer />
+                            <!-- <Button xmlns="sap.m" icon="sap-icon://search" press="onSearch" text="{i18n>bt_search}" id="bt_search" type="Emphasized" /> -->
+                            <!-- <Button xmlns="sap.m" icon="sap-icon://alphabetical-order" press="onTest" text="Test" id="bt_Test" type="Emphasized" /> -->
+                            <ToolbarSpacer />
+                        </Toolbar>
+                    </f:content>
+                </f:DynamicPageHeader>
+            </f:header>
+            <f:content>
+                <Panel
+                    accessibleRole="Form"
+                    backgroundDesign="Translucent"
+                    expandAnimation="true"
+                    expandable="false"
+                    expanded="false"
+                    headerText="{i18n>character_name}"
+                    height="auto"
+                    width="100%"
+                >
+                    <content>
+                        <HBox>
+                            <VBox backgroundDesign="Translucent">
+                                <Title
+                                    text="Principal"
+                                    level="H2"
+                                />
+                                <Label text="Nome" />
+                                <Input value="{/name}" />
+
+                                <Label text="Classe" />
+                                <Input value="{/class}" />
+
+                                <Label text="Level" />
+                                <Input value="{/level}" />
+
+                                <Label text="Raça" />
+                                <Input value="{/race}" />
+                            </VBox>
+
+                            <VBox backgroundDesign="Translucent">
+                                <Title
+                                    text="Attributes"
+                                    level="H2"
+                                />
+
+                                <Label text="Strength" />
+                                <Input value="{/strength}" />
+
+                                <Label text="Dexterity" />
+                                <Input value="{/dexterity}" />
+
+                                <Label text="Constitution" />
+                                <Input value="{/constitution}" />
+
+                                <Label text="Intelligence" />
+                                <Input value="{/intelligence}" />
+
+                                <Label text="Wisdom" />
+                                <Input value="{/wisdom}" />
+
+                                <Label text="Charisma" />
+                                <Input value="{/charisma}" />
+                            </VBox>
+
+                            <VBox backgroundDesign="Translucent">
+                                <Title
+                                    text="Skills"
+                                    level="H2"
+                                />
+
+                                <Label text="Acrobatics" />
+                                <Input value="{/acrobatics}" />
+
+                                <!-- Add more skills here -->
+                            </VBox>
+                        </HBox>
+
+                        <Button
+                            text="Save"
+                            press="onSavePress"
+                        />
+                    </content>
+                </Panel>
+            </f:content>
+            <f:footer>
+                <OverflowToolbar visible="{/isRoleEdit}">
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </f:footer>
+        </f:DynamicPage>
+    </App>
+</mvc:View>
